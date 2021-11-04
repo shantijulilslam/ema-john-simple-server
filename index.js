@@ -21,7 +21,8 @@ const port = 5000
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
   const productsCollection = client.db(process.env.DB_NAME).collection(process.env.DB_COLLECTION);
-  const ordersCollection = client.db(process.env.DB_NAME).collection("orders");
+  const ordersCollection = client.db(process.env.DB_NAME).collection(process.env.DB_COLLECTION2);
+
   app.post('/addProducts',(req,res) => {
     const products = req.body;
     console.log(products)
